@@ -17,13 +17,36 @@
 </head>
 
 <body>
+
   <h1>catcollector</h1>
+
+
+  {% extends 'base.html' %}
+  {% load static %}
+  {% block content %}
+
+  <hr />
   <!-- templates/cats/index.html -->
   <a href="/cats/create">Add a New Cat!</a>
   <hr />
-  <hr />
   <a href="/cats">View All My Cats!</a>
+  {% endblock %}
+
   <footer>All Rights Reserved, catcollector 2021</footer>
+
+
+
+
+
+
+
+
+  
+  
+  
+  <!-- <hr />
+  <a href="/cats">View All My Cats!</a> -->
+  
 </body>
 
 </html>

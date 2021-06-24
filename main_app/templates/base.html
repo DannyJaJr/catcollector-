@@ -9,34 +9,43 @@
 </head>
 
 <body>
-    <a href="/cats">
+    <header>
+        {% if user.is_authenticated %}
+        <span>
+            <a href="{% url 'profile' user.username %}">Hello {{user.username}}</a>
+        </span>
+        <span>|</span>
+        <span>
+            <a href="{% url 'logout' %}">Logout</a>
+        </span>
+        {% else %}
+        <span>
+            <a href="{% url 'login' %}">Login</a>
+        </span>
+        <span>|</span>
+        <span>
+            <a href="{% url 'signup' %}">Signup</a>
+        </span>
+        {% endif %}
+        <span>|</span>
+        <a href="/cattoys/create">Add a New Cat Toy!</a>
+        <span>|</span>
+        <a href="/cattoys">View all Cat Toys!</a>
+    </header>
+    <a href="{% url 'cats_index' %}">
         <h1>catcollector</h1>
     </a>
     <hr />
 
+    
+ 
+    <button><a href="/cats/create">Create a New Cat!</a></button>
+    <button><a href="/cats">View All My Cats!</a></button>
+
     {% block content %}
+
     {% endblock %}
-
-    <header>
-        {% if user.is_authenticated %}
-        <span><a href="{% url 'profile' user.username %}">Hello, {{ user.username }}!</a></span>
-        <span> | </span>
-        <span><a href="{% url 'logout' %}">Logout</a></span>
-        <span> | </span>
-        {% else %}
-        <span><a href="{% url 'login' %}">Login</a></span>
-        <span> | </span>
-        <span><a href="{% url 'signup' %}">SignUp</a></span>
-        {% endif %}
-        <a href="/cats">
-            <h1>catcollector</h1>
-        </a>
-    </header>
-    <hr />
-
-
-
-
+    
 
     <footer>
         All Rights Reserved, catcollector 2018
