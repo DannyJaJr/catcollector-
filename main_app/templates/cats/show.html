@@ -1,9 +1,34 @@
-{% extends 'base.html'  %}
-{% block content %}
+<!-- templates/cats/show.html -->
+<div class="card-content">
+    <span class="card-title">{{ cat.name }}</span>
+    <p>Breed: {{ cat.breed }}</p>
+    <p>Description: {{ cat.description }}</p>
+    {% if cat.age > 0 %}
+    <p>Age: {{ cat.age }}</p>
+    {% else %}
+    <p>Age: Kitten</p>
+    {% endif %}
 
-<h2>Name: {{ cat.name }}</h2>
-<p>Bredd: {{cat.breed}}</p>
-<p>Description: {{cat.description}}</p>
-<p>Age: {{ cat.age }}</p>
 
-{% endblock %}
+
+    {% for cattoy in cat.cattoys.all %}
+    <div>{{cattoy.name}}</div>
+    {% empty %}
+    <div>Cat Has No Toys :(</div>
+    {% endfor %}
+
+    <!-- Add links for update and delete here... -->
+    <button><a href="{% url 'cats_update' cat.id %}">Update Details</a> | </button>
+    <button><a href="{% url 'cats_delete' cat.id %}">DELETE This Cat</a></button>
+    <button><a href="/cats/create">Create a New Cat!</a></button>
+    <button><a href="/cats">View All My Cats!</a></button>
+
+
+
+
+
+
+
+
+
+</div>
